@@ -1,14 +1,26 @@
 var listItems = document.getElementsByTagName('li');
 listItems[0].addEventListener('click',function(){
-  window.open("http://arachnoid.com/linux/shell_programming.html","_blank")
+  window.open("mod1.html","_blank")
 });
 listItems[1].addEventListener('click',function(){
-  window.open("ds-example.html","_blank")
+  window.open("mod2.html","_blank")
 });
 listItems[2].addEventListener('click',function(){
-  window.open("https://www.pythonanywhere.com/","_blank")
+  window.open("mod3.html","_blank")
 })
 listItems[3].addEventListener('click',function(){
-  window.open("https://nakedsecurity.sophos.com/2014/09/25/bash-shellshock-vulnerability-what-you-need-to-know/","_blank")
+  window.open("mod4.html","_blank")
+})
+listItems[4].addEventListener('click',function(){
+  window.open("mod5.html","_blank")
+});
+listItems[5].addEventListener('click',function(){
+  window.open("mod6.html","_blank")
+});
+listItems[6].addEventListener('click',function(){
+  window.open("mod7.html","_blank")
+})
+listItems[7].addEventListener('click',function(){
+  window.open("mod8.html","_blank")
 })
 
