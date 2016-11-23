@@ -9,9 +9,13 @@ body
 .lt
 {
   color: blue;
+  font-style: italic;
+  font-weight: bold;
 }
 .pt
 {
+  font-style: normal;
+  font-weight: normal;
   color: green;
 }
 
