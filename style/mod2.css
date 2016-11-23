@@ -2,6 +2,9 @@ body
 {
 
 }
+h3{
+ color: blue;
+}
 .course
 {
   display: none;
