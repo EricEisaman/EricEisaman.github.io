@@ -4,7 +4,7 @@ var btnSubmit = document.getElementById('submit');
 
 inpCourse.addEventListener('change', function(e){
   var elem = document.getElementById(inpCourse.value);
-  elem.style.display = 'block';
+  elem.classList.toggle('show');
 });
 
 btnSubmit.addEventListener('click', function(e){
