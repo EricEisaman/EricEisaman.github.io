@@ -23,8 +23,10 @@ for(i=0;i<pts.length;i++){
     e.preventDefault();
     if(e.target.style.backgroundColor=='pink'){
        e.target.style.backgroundColor='green'
+       e.target.style.color='white'
     }else{
       e.target.style.backgroundColor='pink'
+      e.target.style.color='black'
     }
   });
 }
