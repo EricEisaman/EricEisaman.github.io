@@ -19,7 +19,6 @@ btnSubmit.addEventListener('click', function(e){
 
 var pts = document.getElementsByClassName('pt');
 for(i=0;i<pts.length;i++){
-  /*
   pts[i].addEventListener('click',function(e){
     if(e.target.style.backgroundColor=='pink'){
        e.target.style.backgroundColor='green'
@@ -29,14 +28,4 @@ for(i=0;i<pts.length;i++){
       e.target.style.color='black'
     }
   });
-  */
-  pts[i].onclick = function(e){
-    if(e.target.style.backgroundColor=='pink'){
-       e.target.style.backgroundColor='green'
-       e.target.style.color='white'
-    }else{
-      e.target.style.backgroundColor='pink'
-      e.target.style.color='black'
-    }
-  };
 }
