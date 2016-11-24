@@ -17,12 +17,16 @@ btnSubmit.addEventListener('click', function(e){
   alert(inpPassword.value);
 });
 
+function Green(elem){
+  elem.style.backgroundColor = 'x000';
+}
+
 var pts = document.getElementsByClassName('pt');
 console.log('pts : ' , pts);
 for(i=0;i<pts.length;i++){
   //pts[i].mastered = true;
   pts[i].addEventListener('click',function(e){
-    this.style.width ='100px';
+    Green(this);
     this.style.color='white';
     console.log(this);
     console.log(e.target);
@@ -36,3 +40,4 @@ for(i=0;i<pts.length;i++){
     }
   }.bind(pts[i]));
 }
+
