@@ -17,21 +17,13 @@ btnSubmit.addEventListener('click', function(e){
   alert(inpPassword.value);
 });
 
-function Green(elem){
-  console.log('Going Green!');
-  pts[0].style.backgroundColor='black'
-  console.log(pts[0].style.backgroundColor);
-}
-
 var pts = document.getElementsByClassName('pt');
-pts[0].style.backgroundColor='black'
-console.log(pts[0].style.backgroundColor);
 console.log('pts : ' , pts);
 for(i=0;i<pts.length;i++){
   //pts[i].mastered = true;
   pts[i].addEventListener('click',function(e){
-    Green(this);
-    this.style.color='white';
+    pts[0].style.backgroundColor='black'
+    console.log(pts[0].style.backgroundColor);
     console.log(this);
     console.log(e.target);
     console.log(e.target.className);
