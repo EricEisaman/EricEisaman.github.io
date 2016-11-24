@@ -68,5 +68,8 @@ button {
    background: url(new_arrow.jpg) no-repeat right #ddd;
    border: 1px solid #ccc;
    }
+.green {
+  background-color: green;
+}
 
 
