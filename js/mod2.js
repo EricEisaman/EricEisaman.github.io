@@ -20,6 +20,7 @@ btnSubmit.addEventListener('click', function(e){
 function Green(elem){
   console.log('Going Green!');
   pts[0].style.backgroundColor='black'
+  console.log(pts[0].style.backgroundColor);
 }
 
 var pts = document.getElementsByClassName('pt');
