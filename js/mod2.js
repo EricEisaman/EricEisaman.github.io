@@ -19,7 +19,7 @@ btnSubmit.addEventListener('click', function(e){
 
 function Green(elem){
   console.log('Going Green!');
-  document.body.style['background-color'] = 'x000';
+  elem.className += 'green';
 }
 
 var pts = document.getElementsByClassName('pt');
