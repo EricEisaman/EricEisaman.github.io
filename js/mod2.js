@@ -20,15 +20,18 @@ btnSubmit.addEventListener('click', function(e){
 var pts = document.getElementsByClassName('pt');
 console.log('pts : ' , pts);
 for(i=0;i<pts.length;i++){
+  //pts[i].mastered = true;
   pts[i].addEventListener('click',function(e){
+    e.target.style.backgroundColor='green';
+    e.target.style.color='white';
     console.log(e.target.style.backgroundColor);
     console.log(e.target);
-    if(e.target.style.backgroundColor=='pink' || e.target.style.backgroundColor==rgb(255, 192, 203)){
-       e.target.style.backgroundColor='green'
-       e.target.style.color='white'
+    if(e.target.style.backgroundColor=='pink'){
+       e.target.style.backgroundColor='green';
+       e.target.style.color='white';
     }else{
-      e.target.style.backgroundColor='pink'
-      e.target.style.color='black'
+      e.target.style.backgroundColor='pink';
+      e.target.style.color='black';
     }
   });
 }
