@@ -22,8 +22,8 @@ console.log('pts : ' , pts);
 for(i=0;i<pts.length;i++){
   //pts[i].mastered = true;
   pts[i].addEventListener('click',function(e){
-    e.target.style.background ='green';
-    e.target.style.color='white';
+    this.style.background ='green';
+    this.style.color='white';
     console.log(this);
     console.log(e.target);
     console.log(e.target.className);
