@@ -25,7 +25,7 @@ h3{
 .styled-select select 
 {
    background: transparent;
-   width: 268px;
+   width: 278px;
    padding: 5px;
    font-size: 16px;
    line-height: 1;
@@ -35,7 +35,7 @@ h3{
    -webkit-appearance: none;
 }
 .styled-select {
-   width: 240px;
+   width: 250px;
    height: 34px;
    overflow: hidden;
    background: url(new_arrow.jpg) no-repeat right #ddd;
