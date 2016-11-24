@@ -4,10 +4,10 @@ var btnSubmit = document.getElementById('submit');
 
 inpCourse.addEventListener('change', function(e){
   var elem = document.getElementById(inpCourse.value);
-  var divs = document.getElementsByTagName('div');
-  for(i=0; i<divs.length ; i++){
-    if (divs[i].style.display !== 'none') {
-        divs[i].style.display = 'none';
+  var courses = document.getElementsByClassName('course');
+  for(i=0; i<courses.length ; i++){
+    if (courses[i].style.display !== 'none') {
+        courses[i].style.display = 'none';
     }
   }
   elem.style.display = 'block';
