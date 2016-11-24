@@ -23,7 +23,7 @@ for(i=0;i<pts.length;i++){
   //pts[i].mastered = true;
   pts[i].addEventListener('click',function(e){
     pts[i].style.backgroundColor='black';
-    console.log(this.style.backgroundColor);
+    console.log(this.style);
     console.log(this);
     console.log(e.target);
     console.log(e.target.className);
