@@ -18,6 +18,7 @@ btnSubmit.addEventListener('click', function(e){
 });
 
 var pts = document.getElementsByClassName('pt');
+console.log(pts);
 for(i=0;i<pts.length;i++){
   pts[i].addEventListener('click',function(e){
     if(e.target.style.backgroundColor=='pink'){
