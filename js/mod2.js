@@ -23,7 +23,7 @@ for(i=0;i<pts.length;i++){
   //pts[i].mastered = true;
   pts[i].addEventListener('click',function(e){
     alert();
-    e.target.style.backgroundColor='black'
+    document.body.style.backgroundColor='black'
     console.log(this.style.backgroundColor);
     console.log(this);
     console.log(e.target);
