@@ -34,5 +34,5 @@ for(i=0;i<pts.length;i++){
       e.target.style.backgroundColor='pink';
       e.target.style.color='black';
     }
-  }.bind(this));
+  }.bind(pts[i]));
 }
