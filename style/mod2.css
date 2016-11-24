@@ -45,6 +45,8 @@ button {
   font-weight: normal;
   background-color: pink;
   cursor: pointer;
+  padding: 5px 5px;
+  border: 2px inset gray;
 }
 .styled-select select 
 {
