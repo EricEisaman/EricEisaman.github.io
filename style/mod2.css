@@ -32,6 +32,7 @@ h3{
    border: 0;
    border-radius: 0;
    height: 34px;
+   outline: none;
    -webkit-appearance: none;
 }
 .styled-select {
