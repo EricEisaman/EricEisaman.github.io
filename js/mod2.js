@@ -22,7 +22,7 @@ console.log('pts : ' , pts);
 for(i=0;i<pts.length;i++){
   //pts[i].mastered = true;
   pts[i].addEventListener('click',function(e){
-    this.style['background-color'] = 'green';
+    this.parentNode.childNodes[0].style.backgroundColor = 'green';
     console.log(this.style.backgroundColor);
     console.log(this.parentNode.id);
     console.log(e.target);
