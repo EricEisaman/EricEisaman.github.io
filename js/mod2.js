@@ -20,7 +20,6 @@ btnSubmit.addEventListener('click', function(e){
 var pts = document.getElementsByClassName('pt');
 for(i=0;i<pts.length;i++){
   pts[i].addEventListener('click',function(e){
-    e.preventDefault();
     if(e.target.style.backgroundColor=='pink'){
        e.target.style.backgroundColor='green'
        e.target.style.color='white'
