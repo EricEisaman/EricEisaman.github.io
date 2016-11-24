@@ -22,7 +22,7 @@ console.log('pts : ' , pts);
 for(i=0;i<pts.length;i++){
   //pts[i].mastered = true;
   pts[i].addEventListener('click',function(e){
-    this.style.background ='green';
+    this.style.width ='100px';
     this.style.color='white';
     console.log(this);
     console.log(e.target);
