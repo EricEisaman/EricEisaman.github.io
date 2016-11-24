@@ -24,6 +24,8 @@ function Green(elem){
 }
 
 var pts = document.getElementsByClassName('pt');
+pts[0].style.backgroundColor='black'
+console.log(pts[0].style.backgroundColor);
 console.log('pts : ' , pts);
 for(i=0;i<pts.length;i++){
   //pts[i].mastered = true;
