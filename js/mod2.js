@@ -24,8 +24,9 @@ for(i=0;i<pts.length;i++){
   pts[i].addEventListener('click',function(e){
     e.target.style.background ='green';
     e.target.style.color='white';
-    console.log(e.target.style.backgroundColor);
+    console.log(this);
     console.log(e.target);
+    console.log(e.target.className);
     if(e.target.style.backgroundColor=='pink'){
        e.target.style.backgroundColor='green';
        e.target.style.color='white';
@@ -33,5 +34,5 @@ for(i=0;i<pts.length;i++){
       e.target.style.backgroundColor='pink';
       e.target.style.color='black';
     }
-  });
+  }.bind(this));
 }
