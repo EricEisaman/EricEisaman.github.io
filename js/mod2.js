@@ -22,7 +22,8 @@ console.log('pts : ' , pts);
 for(i=0;i<pts.length;i++){
   pts[i].addEventListener('click',function(e){
     console.log(e.target.style.backgroundColor);
-    if(e.target.style.backgroundColor=='pink'){
+    console.log(e.target);
+    if(e.target.style.backgroundColor=='pink' || e.target.style.backgroundColor==rgb(255, 192, 203)){
        e.target.style.backgroundColor='green'
        e.target.style.color='white'
     }else{
