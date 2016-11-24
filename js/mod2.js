@@ -22,9 +22,9 @@ console.log('pts : ' , pts);
 for(i=0;i<pts.length;i++){
   //pts[i].mastered = true;
   pts[i].addEventListener('click',function(e){
-    this.parentNode.childNodes[1].style.backgroundColor = 'green';
+    e.target.parentNode.childNodes[1].style.backgroundColor = 'green';
     console.log(this.style.backgroundColor);
-    console.log(this.parentNode.id);
+    console.log(e.target.parentNode.id);
     console.log(e.target);
     console.log(e.target.className);
     if(e.target.style.backgroundColor=='pink'){
