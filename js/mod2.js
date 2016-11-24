@@ -24,7 +24,7 @@ for(i=0;i<pts.length;i++){
   pts[i].addEventListener('click',function(e){
     this.style['background-color'] = 'green';
     console.log(this.style.backgroundColor);
-    console.log(this);
+    console.log(this.parentNode.id);
     console.log(e.target);
     console.log(e.target.className);
     if(e.target.style.backgroundColor=='pink'){
