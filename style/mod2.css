@@ -1,6 +1,13 @@
 body
 {
   font-family: 'Work Sans';
+  -webkit-user-select: none; /* Chrome/Safari */        
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+ */
+
+  /* Rules below not implemented in browsers yet */
+  -o-user-select: none;
+  user-select: none;
 }
 h3{
  color: blue;
@@ -37,13 +44,6 @@ button {
   font-weight: normal;
   background-color: pink;
   cursor: pointer;
-  -webkit-user-select: none; /* Chrome/Safari */        
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* IE10+ */
-
-  /* Rules below not implemented in browsers yet */
-  -o-user-select: none;
-  user-select: none;
 }
 .styled-select select 
 {
