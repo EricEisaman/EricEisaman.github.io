@@ -18,6 +18,7 @@ btnSubmit.addEventListener('click', function(e){
 });
 
 function Green(elem){
+  console.log('Going Green!');
   elem.style.backgroundColor = 'x000';
 }
 
