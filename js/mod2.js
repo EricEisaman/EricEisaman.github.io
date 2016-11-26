@@ -20,7 +20,8 @@ btnSubmit.addEventListener('click', function(e){
     data.pw = inpPassword.value;
     var d = {};
     d.course = inpCourse.value;
-    d.profs = JSON.stringify(computeProficiencies());
+    var p = computeProficiencies();
+    d.profs = JSON.stringify(p);
     data.d = JSON.stringify(d);
     //console.log(JSON.stringify(data));
     var xhr = new XMLHttpRequest();
@@ -66,11 +67,13 @@ function computeProficiencies(){
   console.log(courseElement);
   var n = 0;
   var lts = courseElement.getElementsByClassName('lt');
+  console.log(lts);
   for(i=0;i<lts.length;i++){
     var ptasks = lts[i].getElementsByClassName('pt');
+    console.log(ptasks);
     var numGreen = 0;
-    for(i=0;i<ptasks.length;i++){
-      if(ptasks[i].style.backgroundColor=='pink' || ptasks[i].style.backgroundColor=='rgb(255, 192, 203)'){
+    for(j=0;j<ptasks.length;j++){
+      if(ptasks[j].style.backgroundColor=='pink' || ptasks[j].style.backgroundColor=='rgb(255, 192, 203)'){
         //marked as not accomplished 'pink'
       }else{
         numGreen++;
