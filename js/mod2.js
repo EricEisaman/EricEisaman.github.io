@@ -14,7 +14,34 @@ inpCourse.addEventListener('change', function(e){
 });
 
 btnSubmit.addEventListener('click', function(e){
-  alert(inpPassword.value);
+  if(inpCourse.value){
+    var data = {};
+    data.pw = inpPassword.value;
+    data.d = {};
+    data.d.course = inpCourse.value;
+    data.d.array = computeLTNameValueArray();
+    console.log(JSON.stringify(data));
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'http://sirfizx.pythonanywhere.com/api/update/', true);
+    xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+    xhr.send(JSON.stringify(data));
+    xhr.onload = function (e) {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200 && !xhr.responseText.startsWith('A')) {
+          var o = JSON.parse(xhr.responseText);
+          console.log(o);
+        } else {
+          console.error(xhr.statusText);
+          console.error(xhr.responseText);
+        }
+      }
+    };
+    xhr.onerror = function (e) {
+      console.error(xhr.statusText);
+    };
+  }else{
+
+  }
 });
 
 var pts = document.getElementsByClassName('pt');
@@ -31,3 +58,22 @@ for(i=0;i<pts.length;i++){
   }.bind(pts[i]));
 }
 
+function computeLTNameValueArray(){
+  var a = [];
+  var courseElement = document.getElementById(inpCourse.value);
+  var lts = courseElement.getElementsByClassName('lt');
+  for(i=0;i<lts.length;i++){
+    var ptasks = lts[i].getElementsByClassName('pt');
+    var numGreen = 0;
+    for(i=0;i<ptasks.length;i++){
+      if(ptasks[i].style.backgroundColor=='pink' || ptasks[i].style.backgroundColor=='rgb(255, 192, 203)'){
+        //marked as not accomplished 'pink'
+      }else{
+        numGreen++;
+      }
+    }
+    var scaleValue = Math.round(3*(numGreen/ptasks.length))+1;
+    a[lts[i].getElementsByTagName('h3')[0].innerText]=scaleValue;
+  }
+  return a;
+}
