@@ -20,10 +20,7 @@ btnSubmit.addEventListener('click', function(e){
 var pts = document.getElementsByClassName('pt');
 console.log('pts : ' , pts);
 for(i=0;i<pts.length;i++){
-  //pts[i].mastered = true;
   pts[i].addEventListener('click',function(e){
-    console.log(e.target);
-    console.log(e.target.style.backgroundColor=='pink' || e.target.style.backgroundColor=='rgb(255, 192, 203)');
     if(e.target.style.backgroundColor=='pink' || e.target.style.backgroundColor=='rgb(255, 192, 203)'){
        e.target.style.backgroundColor='green';
        e.target.style.color='white';
