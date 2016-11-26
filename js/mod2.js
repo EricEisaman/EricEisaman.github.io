@@ -77,5 +77,5 @@ function computeProficiencies(){
     var scaleValue = Math.round(3*(numGreen/ptasks.length))+1;
     profs[lts[i].getElementsByTagName('h3')[0].innerText]=scaleValue;
   }
-  return a;
+  return profs;
 }
