@@ -14,6 +14,7 @@ inpCourse.addEventListener('change', function(e){
 });
 
 btnSubmit.addEventListener('click', function(e){
+  console.log('Sending Data ...');
   if(inpCourse.value != '0'){
     var data = {};
     data.pw = inpPassword.value;
