@@ -63,6 +63,8 @@ for(i=0;i<pts.length;i++){
 function computeProficiencies(){
   var profs = {};
   var courseElement = document.getElementById(inpCourse.value);
+  console.log(courseElement);
+  var n = 0;
   var lts = courseElement.getElementsByClassName('lt');
   for(i=0;i<lts.length;i++){
     var ptasks = lts[i].getElementsByClassName('pt');
@@ -77,6 +79,7 @@ function computeProficiencies(){
     var scaleValue = Math.round(3*(numGreen/ptasks.length))+1;
     var s = lts[i].getElementsByTagName('h3')[0].innerText;
     console.log(s);
+    if(++n>100)return;
     profs[s]=scaleValue;
   }
   console.log(profs);
