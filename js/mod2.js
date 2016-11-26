@@ -23,7 +23,7 @@ for(i=0;i<pts.length;i++){
   //pts[i].mastered = true;
   pts[i].addEventListener('click',function(e){
     console.log(e.target);
-    console.log(e.target.parentNode);
+    console.log(e.target.style.backgroundColor=='pink');
     if(e.target.style.backgroundColor=='pink'){
        e.target.style.backgroundColor='green';
        e.target.style.color='white';
