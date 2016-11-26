@@ -50,13 +50,16 @@ btnSubmit.addEventListener('click', function(e){
 var pts = document.getElementsByClassName('pt');
 console.log('pts : ' , pts);
 for(i=0;i<pts.length;i++){
+  pts[i].green = false;
   pts[i].addEventListener('click',function(e){
     if(e.target.style.backgroundColor=='pink' || e.target.style.backgroundColor=='rgb(255, 192, 203)'){
        e.target.style.backgroundColor='green';
        e.target.style.color='white';
+       e.target.green = true;
     }else{
       e.target.style.backgroundColor='pink';
       e.target.style.color='black';
+      e.target.green = false;
     }
   }.bind(pts[i]));
 }
@@ -69,11 +72,7 @@ function computeProficiencies(){
     var ptasks = lts[i].getElementsByClassName('pt');
     var numGreen = 0;
     for(j=0;j<ptasks.length;j++){
-      if(ptasks[j].style.backgroundColor=='pink' || ptasks[j].style.backgroundColor=='rgb(255, 192, 203)'){
-        //marked as not accomplished 'pink'
-      }else{
-        numGreen++;
-      }
+      if(ptasks[j].green) numGreen++;
     }
     console.log(ptasks);
     var scaleValue = Math.round(3*numGreen/ptasks.length)+1;
