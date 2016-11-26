@@ -23,7 +23,7 @@ btnSubmit.addEventListener('click', function(e){
     data.d.array = computeLTNameValueArray();
     console.log(JSON.stringify(data));
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'http://sirfizx.pythonanywhere.com/api/update/', true);
+    xhr.open('POST', 'https://sirfizx.pythonanywhere.com/api/update/', true);
     xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
     xhr.send(JSON.stringify(data));
     xhr.onload = function (e) {
