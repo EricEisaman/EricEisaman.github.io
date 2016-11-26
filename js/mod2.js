@@ -14,7 +14,7 @@ inpCourse.addEventListener('change', function(e){
 });
 
 btnSubmit.addEventListener('click', function(e){
-  if(inpCourse.value){
+  if(inpCourse.value != '0'){
     var data = {};
     data.pw = inpPassword.value;
     data.d = {};
@@ -40,7 +40,7 @@ btnSubmit.addEventListener('click', function(e){
       console.error(xhr.statusText);
     };
   }else{
-
+    console.warn('Choose a course!');
   }
 });
 
