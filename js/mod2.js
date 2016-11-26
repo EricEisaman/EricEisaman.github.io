@@ -38,7 +38,7 @@ btnSubmit.addEventListener('click', function(e){
       }
     };
     xhr.onerror = function (e) {
-      console.error(xhr.statusText);
+      console.warn('ERROR');
     };
   }else{
     console.warn('Choose a course!');
