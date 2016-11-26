@@ -18,10 +18,11 @@ btnSubmit.addEventListener('click', function(e){
   if(inpCourse.value != '0'){
     var data = {};
     data.pw = inpPassword.value;
-    data.d = {};
-    data.d.course = inpCourse.value;
-    data.d.array = computeLTNameValueArray();
-    console.log(JSON.stringify(data));
+    var d = {};
+    d.course = inpCourse.value;
+    d.profs = JSON.stringify(computeProficiencies());
+    data.d = JSON.stringify(d);
+    //console.log(JSON.stringify(data));
     var xhr = new XMLHttpRequest();
     xhr.open('POST', 'https://sirfizx.pythonanywhere.com/api/update/', true);
     xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
@@ -59,8 +60,8 @@ for(i=0;i<pts.length;i++){
   }.bind(pts[i]));
 }
 
-function computeLTNameValueArray(){
-  var a = [];
+function computeProficiencies(){
+  var profs = {};
   var courseElement = document.getElementById(inpCourse.value);
   var lts = courseElement.getElementsByClassName('lt');
   for(i=0;i<lts.length;i++){
@@ -74,7 +75,7 @@ function computeLTNameValueArray(){
       }
     }
     var scaleValue = Math.round(3*(numGreen/ptasks.length))+1;
-    a[lts[i].getElementsByTagName('h3')[0].innerText]=scaleValue;
+    profs[lts[i].getElementsByTagName('h3')[0].innerText]=scaleValue;
   }
   return a;
 }
