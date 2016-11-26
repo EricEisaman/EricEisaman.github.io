@@ -64,13 +64,9 @@ for(i=0;i<pts.length;i++){
 function computeProficiencies(){
   var profs = {};
   var courseElement = document.getElementById(inpCourse.value);
-  console.log(courseElement);
-  var n = 0;
   var lts = courseElement.getElementsByClassName('lt');
-  console.log(lts);
   for(i=0;i<lts.length;i++){
     var ptasks = lts[i].getElementsByClassName('pt');
-    console.log(ptasks);
     var numGreen = 0;
     for(j=0;j<ptasks.length;j++){
       if(ptasks[j].style.backgroundColor=='pink' || ptasks[j].style.backgroundColor=='rgb(255, 192, 203)'){
@@ -79,10 +75,8 @@ function computeProficiencies(){
         numGreen++;
       }
     }
-    var scaleValue = Math.round(3*(numGreen/ptasks.length))+1;
+    var scaleValue = Math.round(3*numGreen/ptasks.length)+1;
     var s = lts[i].getElementsByTagName('h3')[0].innerText;
-    console.log(s);
-    if(++n>100)return;
     profs[s]=scaleValue;
   }
   console.log(profs);
