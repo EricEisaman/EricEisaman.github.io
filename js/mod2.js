@@ -74,12 +74,12 @@ function computeProficiencies(){
     for(j=0;j<ptasks.length;j++){
       if(ptasks[j].green) numGreen++;
     }
-    console.log(ptasks);
+    //console.log(ptasks);
     var scaleValue = Math.round(4*numGreen/ptasks.length);
     if(scaleValue === 0) scaleValue = 1;
     var s = lts[i].getElementsByTagName('h3')[0].innerText;
     profs[s]=scaleValue;
   }
-  console.log(profs);
+  //console.log(profs);
   return profs;
 }
