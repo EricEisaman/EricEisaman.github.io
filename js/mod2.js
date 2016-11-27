@@ -91,9 +91,36 @@ function printSummary(results){
   console.log(data.profs);
   var profs = data.profs;
   profs = JSON.parse(profs);
+  var output = document.createElement('div');
   for (var pt in profs) {
     if (profs.hasOwnProperty(pt)) {
       console.log(pt , profs[pt]);
+      let r = document.createElement('div');
+      r.style.fontWeight = 'bold';
+      switch(profs[pt]){
+        case 1: r.style.color = 'red';
+          break;
+        case 2: r.style.color = 'orange';
+          break;
+        case 3: r.style.color = 'blue';
+          break;
+        case 4: r.style.color = 'green';
+          break;
+      }
+      r.innerText = pt + '  ' + profs[pt];
+      output.appendChild(r);
     }
   }
+  document.body.appendChild(output);
 }
+
+// var aTags = document.getElementsByTagName("a");
+// var searchText = "SearchingText";
+// var found;
+//
+// for (var i = 0; i < aTags.length; i++) {
+//   if (aTags[i].textContent == searchText) {
+//     found = aTags[i];
+//     break;
+//   }
+// }
