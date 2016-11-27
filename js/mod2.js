@@ -85,7 +85,9 @@ function computeProficiencies(){
   return profs;
 }
 
+var results = {};
 function printSummary(results){
   let data = JSON.parse(results.data);
   console.log(data);
+  results = data;
 }
