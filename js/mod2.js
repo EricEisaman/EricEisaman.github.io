@@ -33,6 +33,7 @@ btnSubmit.addEventListener('click', function(e){
         if (xhr.status === 200 && !xhr.responseText.startsWith('A')) {
           var o = JSON.parse(xhr.responseText);
           console.log(o);
+          printSummary(o.student[0]);
         } else {
           console.error(xhr.statusText);
           console.error(xhr.responseText);
@@ -82,4 +83,10 @@ function computeProficiencies(){
   }
   //console.log(profs);
   return profs;
+}
+
+function printSummary(results){
+  let data = JSON.parse(results.data);
+  let profs = JSON.parse(data.profs);
+  document.write(profs[0]);
 }
