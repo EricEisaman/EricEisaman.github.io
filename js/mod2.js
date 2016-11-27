@@ -112,7 +112,6 @@ function printSummary(results){
       output.appendChild(r);
     }
   }
-  document.body.appendChild(output);
 }
 
 // var aTags = document.getElementsByTagName("a");
