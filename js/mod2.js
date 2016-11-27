@@ -92,6 +92,7 @@ function printSummary(results){
   var profs = data.profs;
   profs = JSON.parse(profs);
   var output = document.createElement('div');
+  output.style.fontSize = '20px';
   for (var pt in profs) {
     if (profs.hasOwnProperty(pt)) {
       console.log(pt , profs[pt]);
