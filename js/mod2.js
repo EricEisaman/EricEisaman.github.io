@@ -91,7 +91,7 @@ function printSummary(results){
   console.log(data.profs);
   var profs = data.profs;
   console.log(profs['1D.a']);
-  profs = JSON.parse(" ' "+ profs + " ' ");
+  profs = JSON.parse(profs);
   for (var pt in profs) {
     if (profs.hasOwnProperty(pt)) {
       console.log(profs[pt]);
