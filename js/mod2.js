@@ -89,4 +89,10 @@ function computeProficiencies(){
 function printSummary(results){
   let data = JSON.parse(results.data);
   console.log(data.profs);
+  var profs = data.profs;
+  for (var pt in profs) {
+    if (profs.hasOwnProperty(pt)) {
+      console.log(profs[pt]);
+    }
+  }
 }
