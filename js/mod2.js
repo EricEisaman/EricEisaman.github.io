@@ -112,6 +112,7 @@ function printSummary(results){
       output.appendChild(r);
     }
   }
+  window.scrollTo(0,document.body.scrollHeight);
 }
 
 // var aTags = document.getElementsByTagName("a");
