@@ -3,9 +3,10 @@ ____
 * Custom Learning Path Template
 * ELHS Game Dev Course Requirement
 
-## Weekly Requirements
+## Bi-Weekly Requirements
 ____
-* Post - (100 Words Minumum)
-* Image 
-* Animated GIF or Video
+* Paragraph - (100 Words Minumum) (200pts)
+* Static Image (200pts)
+* Animated GIF or Video (200pts)
+* Code File linked in paragraph (300pts)
 
