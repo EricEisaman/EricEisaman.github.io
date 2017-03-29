@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<scene depth="3" desc="" eventsnippetid="41" extheight="384" extwidth="1312" extx="-32" exty="-32" format="3.4.0" gravx="-0.0" gravy="105.0" height="320" id="0" name="Main" revision="" savecount="0" tiled="1" tileh="32" tilew="32" type="standard" width="1248">
+    <layers>
+        <grad-bg b1="153" b2="51" g1="153" g2="51" r1="153" r2="51"/>
+        <layer blendMode="normal" color="0,0,255" id="1" locked="false" name="Layer 1" opacity="100" order="2" scrollFactorX="1.0" scrollFactorY="1.0" visible="true"/>
+        <layer blendMode="normal" color="100,168,234" id="0" locked="false" name="Layer 0" opacity="100" order="1" scrollFactorX="1.0" scrollFactorY="1.0" visible="true"/>
+        <layer blendMode="normal" color="0,255,0" id="2" locked="false" name="Layer 2" opacity="100" order="0" scrollFactorX="1.0" scrollFactorY="1.0" visible="true"/>
+    </layers>
+    <joints/>
+    <regions/>
+    <terrainRegions/>
+    <actors>
+        <actor a="0.0" aid="1" c="false" group="0" id="3" name="Player 1" sx="1.0" sy="1.0" x="60" y="188" z="0"/>
+        <actor a="0.0" aid="5" c="false" group="3" id="23" name="LeftButton 5" sx="1.0" sy="1.0" x="17" y="253" z="0"/>
+        <actor a="0.0" aid="6" c="false" group="3" id="78" name="RightButton 6" sx="1.0" sy="1.0" x="86" y="253" z="0"/>
+        <actor a="0.0" aid="7" c="false" group="3" id="76" name="ActionButton 7" sx="1.0" sy="1.0" x="414" y="253" z="2"/>
+    </actors>
+    <snippets/>
+    <terrain>
+        <p pts="4,64.0,0.0,64.0,160.0,0.0,160.0,0.0,0.0" x="704.0" y="160.0"/>
+        <p pts="26,832.0,320.0,832.0,160.0,864.0,160.0,864.0,192.0,896.0,192.0,896.0,224.0,928.0,224.0,928.0,288.0,1216.0,288.0,1216.0,32.0,1120.0,32.0,1120.0,224.0,1088.0,224.0,1088.0,32.0,32.0,32.0,32.0,224.0,320.0,224.0,320.0,192.0,352.0,192.0,352.0,160.0,480.0,160.0,480.0,320.0,0.0,320.0,0.0,0.0,1248.0,0.0,1248.0,320.0" x="0.0" y="0.0"/>
+        <p pts="4,0.0,32.0,0.0,0.0,96.0,0.0,96.0,32.0" x="160.0" y="128.0"/>
+        <p pts="4,0.0,160.0,0.0,0.0,96.0,0.0,96.0,160.0" x="544.0" y="160.0"/>
+    </terrain>
+    <atlases members="" retainAtlases="true"/>
+</scene>
