@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<pack>
+    <actor adamp="0.0" ascale="true" atlasID="0" bodytype="2" continuous="true" desc="" eventsnippetid="1" fixedrot="false" fric="0.2" gid="3" id="6" ignoreg="false" inertia="1.0" ldamp="0.0" mass="1.0" name="Eddie" oid="-1" pausable="true" physicsMode="0" rest="0.0" shared="false" sprite="7" static="false">
+        <snippets/>
+    </actor>
+    <sprite atlasID="0" default="0" defaultAnimation="0" desc="" height="80" id="7" name="Eddie" shared="false" width="80">
+        <anim across="2" down="1" durations="100,100" height="80" id="0" loop="true" name="Animation 0" numframes="2" originx="40" originy="40" sync="false" version="2" width="160">
+            <poly data="4,0,0,80,0,80,80,0,80" density="0.1" fric="0.2" gid="-1000" id="0" name="Animation 0" rest="0.0" sensor="false"/>
+        </anim>
+    </sprite>
+    <background atlasID="0" desc="" durations="100" dx="-0.0" dy="-0.0" height="480" id="10" name="EL" numframes="1" oid="-1" repeats="false" resized="false" shared="false" width="692" xpf="1.0" ypf="1.0"/>
+</pack>
