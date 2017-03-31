@@ -3,5 +3,6 @@ body {
 }
 
 iframe {
- margin: 0 px auto;
+ margin-left: auto;
+ margin-right: auto;
 }
