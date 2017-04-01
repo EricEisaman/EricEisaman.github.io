@@ -91,8 +91,8 @@ li{
 .zoom img:hover
 {
  position: relative;
- left: -2048px;
- top: -2048px;
+ left: -2348px;
+ top: -2348px;
  width:4096px;
  height:4096px;
 }
