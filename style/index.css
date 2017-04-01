@@ -79,6 +79,9 @@ li{
 {
  width:1024px;
  height:1024px;
+ position: relative;
+ left: -512px;
+ top: -512px;
  -webkit-transition:all 2s ease;
  -moz-transition:all 2s ease;
  -ms-transition:all 2s ease;
@@ -87,6 +90,9 @@ li{
 }
 .zoom img:hover
 {
+ position: relative;
+ left: -2048px;
+ top: -2048px;
  width:4096px;
  height:4096px;
 }
