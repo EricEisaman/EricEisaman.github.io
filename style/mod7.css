@@ -7,4 +7,10 @@ iframe {
  margin-left: auto;
  margin-right: auto;
  scrolling: no;
+ overflow: hidden;
+}
+
+p {
+ margin-left: auto;
+ margin-right: auto;
 }
