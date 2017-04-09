@@ -3,6 +3,12 @@ body {
   color: white;
   font-size: 24px;
 }
+a {
+ link :color: #ff0000; text-decoration: underline; 
+ active :color: #00ccff; text-decoration: underline; 
+ visited :color: #aa80aa; text-decoration: underline; 
+ hover :color: #ff33ff; text-decoration: none;
+}
 
 iframe {
  display: block;
