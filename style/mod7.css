@@ -16,6 +16,7 @@ iframe {
  margin-right: auto;
  scrolling: no;
  overflow: hidden;
+ border: none;
 }
 
 p {
