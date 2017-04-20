@@ -55,7 +55,7 @@ class Angle{
     this_deg = degrees;
   }
   get rad(){
-    return this_deg*Math.PI/180;
+    return this._deg*Math.PI/180;
   }
 }
 
