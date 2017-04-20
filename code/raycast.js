@@ -46,10 +46,16 @@ class Vec2{
 
 class Angle{
   constructor(degrees){
-    this.degrees = degrees;
+    this._deg = degrees;
   }
-  toRadians(){
-  
+  get deg(){
+    return this._deg;
+  }
+  set deg(degrees){
+    this_deg = degrees;
+  }
+  get rad(){
+    return this_deg*Math.PI/180;
   }
 }
 
