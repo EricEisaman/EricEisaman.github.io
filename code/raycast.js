@@ -61,7 +61,7 @@ class Player{
     this.playerSprite = opts.playerSprite;
     this.speed = 1;
     this.velocity = new Vec2(0,0);
-    this.
+    this.direction = new Angle(30);
   }
  
 }
