@@ -12,15 +12,15 @@ var map_1 = [ 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ,
 
 class Level{
   constructor(opts){
-    this.map = opts.map;
-    this.wallSprite = opts.wallSprite;
+    this._map = opts.map;
+    this._wallSprite = opts.wallSprite;
   }
 }
 
 class Scene{
-  constructor(level){
-    this.map = map;
-    this.player = new Player();
+  constructor(opts){
+    this._map = opts.map;
+    this._player = opts.player;
   }
   
 }
@@ -61,11 +61,18 @@ class Angle{
 
 class Player{
   constructor(opts){
-    this.pos = opts.pos;
-    this.playerSprite = opts.playerSprite;
-    this.speed = 1;
-    this.velocity = new Vec2(0,0);
-    this.direction = new Angle(30);
+    this._pos = opts.pos;
+    this._playerSprite = opts.playerSprite;
+    this._speed = 1;
+    this._velocity = new Vec2(0,0);
+    this._direction = new Angle(30);
+  }
+  get pos(){
+    return this._pos;
+  }
+  set pos(x,y){
+    this._pos.x = x;
+    this._pos.y = y;
   }
  
 }
