@@ -25,24 +25,22 @@ class Scene{
   
 }
 
-const s_x = Symbol();
-const s_y = Symbol();
 class Vec2{
   constructor(x,y){
-    this[s_x] = x;
-    this[s_y] = y;
+    this._x = x;
+    this._y = y;
   }
   get x(){
-    return this[s_x];
+    return this._x;
   }
   set x(value){
-    this[s_x] = value;
+    this._x = value;
   }
   get y(){
-    return this[s_y];
+    return this._y;
   }
   set y(value){
-    this[s_y] = value;
+    this._y = value;
   }
 }
 
