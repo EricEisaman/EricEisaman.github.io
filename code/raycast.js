@@ -19,8 +19,10 @@ class Level{
 
 class Scene{
   constructor(opts){
-    this._map = opts.map;
+    this._level = opts.level;
     this._player = opts.player;
+    this._canvas = opts.canvas;
+    this._ctx = this._canvas.getContext('2d');
   }
   
 }
@@ -77,6 +79,22 @@ class Player{
 }
 
 var myPlayer = new Player({
-           pos: new Vec2(1,5) ,
-  playerSprite: "images/player.png"});
+  pos: new Vec2(1,5) ,
+  playerSprite: "images/player.png"
+});
 
+var canvas = document.createElement('canvas');
+canvas.width = 800;
+canvas.height = 600;
+document.body.appendChild(canvas);
+
+var level_1 = new Level({
+  map: map_1,
+  wallSprite: "images/wall.png"
+});
+
+var myScene = new Scene({
+  level: level_1,
+  player: myPlayer,
+  canvas: canvas
+});
