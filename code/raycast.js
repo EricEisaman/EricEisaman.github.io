@@ -70,9 +70,8 @@ class Player{
   get pos(){
     return this._pos;
   }
-  set pos(x,y){
-    this._pos.x = x;
-    this._pos.y = y;
+  set pos(newPos){
+    this._pos = newPos;
   }
  
 }
