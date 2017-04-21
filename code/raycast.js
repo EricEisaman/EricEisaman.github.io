@@ -205,7 +205,13 @@ class Graphics{
     this._ctx.fillStyle = 'black';
     this._ctx.fillRect(0,0,this._canvas.width,this._canvas.height);
     this._ctx.fillStyle = 'red';
-    this._ctx.fillRect(30,30,60,60);
+    for( let i=0; i<this._level.map.length; i++){
+      if(this._level.map[i]){
+        let x = (i$9)*50;
+        let y = 50*Math.floor(i/9);
+        this._ctx.fillRect(x,y,50,50);
+      }
+    }
     this._ctx.fillStyle = 'white';
     this._ctx.fillRect(450,0,350,450);
     this._ctx.fillStyle = 'yellow';
