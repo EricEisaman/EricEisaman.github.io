@@ -202,10 +202,13 @@ class Graphics{
     requestAnimationFrame(this.update.bind(this));
   }
   update(){
+    //First Person Viewport Background
     this._ctx.fillStyle = 'black';
     this._ctx.fillRect(0,0,450,450);
+    //Minimap Background
     this._ctx.fillStyle = 'white';
     this._ctx.fillRect(525,0,200,200);
+    //Minimap Walls
     this._ctx.fillStyle = 'red';
     for( let i=0; i<this._level.map.length; i++){
       if(this._level.map[i]){
@@ -215,12 +218,16 @@ class Graphics{
         this._ctx.fillRect(x,y,200/9,200/9);
       }
     }
+    //Minimap Player ( Note: player is 20x20 and grid squares are 50x50 )
+    this._ctx.fillStyle = 'blue';
+    this._ctx.fillRect(this._player.pos.x-10,this._player.y-10,20,20);
+    
     requestAnimationFrame(this.update.bind(this));
   }
 }
 
 var myPlayer = new Player({
-  pos: new Vec2(1,5) ,
+  pos: new Vec2(50,250) ,
   playerSprite: "images/player.png"
 });
 
