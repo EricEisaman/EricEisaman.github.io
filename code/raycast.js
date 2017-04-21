@@ -110,6 +110,7 @@ class Player{
     this._angle = new Angle(30);
     this._turning = TURNING.NONE;
     this._moving = MOVING.NONE;
+    this._fov = new Angle(60);
     this.initControls();
   }
   initControls(){
