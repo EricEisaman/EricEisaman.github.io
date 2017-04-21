@@ -164,6 +164,7 @@ class Physics{
    this.update(dt);
   }
   update(dt){
+    console.clear();
     console.log(dt);
     //angle
     console.log(this._player.turning);
