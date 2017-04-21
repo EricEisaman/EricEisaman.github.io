@@ -211,8 +211,8 @@ class Graphics{
     this._ctx.fillStyle = 'red';
     for( let i=0; i<this._level.map.length; i++){
       if(this._level.map[i]){
-        let x = (i%9)*200/9;
-        let y = 200/9*Math.floor(i/9);
+        let x = (i%9)*200/9+525;
+        let y = 200/9*Math.floor(i/9)+25;
         console.log("map["+i+"]  x: "+x+"  y: "+y);
         this._ctx.fillRect(x,y,200/9,200/9);
       }
