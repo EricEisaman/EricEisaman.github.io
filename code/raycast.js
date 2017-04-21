@@ -166,7 +166,7 @@ class Physics{
   update(dt){
     console.log(dt);
     //angle
-    console.log(this._player.direction);
+    console.log(this._player.turning);
     console.log(this._player.angle);
     //position
     console.log(this._player.moving);
