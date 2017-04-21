@@ -195,7 +195,7 @@ class Graphics{
     this._ctx.fillStyle = 'red';
     this._ctx.fillRect(30,30,60,60);
     this._ctx.fillStyle = 'white';
-    this._ctx.fillRect(450,0,100,100);
+    this._ctx.fillRect(450,0,150,450);
     requestAnimationFrame(this.update.bind(this));
   }
 }
