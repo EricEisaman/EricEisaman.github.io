@@ -135,6 +135,12 @@ class Player{
   set angle(angle){
     this._angle = angle;
   }
+  get turning(){
+    return this._turning;
+  }
+  get moving(){
+    return this._moving;
+  }
 }
 
 class Physics{
@@ -157,9 +163,11 @@ class Physics{
   }
   update(dt){
     console.log(dt);
-    //direction
+    //angle
+    console.log(this._player.direction);
     console.log(this._player.angle);
     //position
+    console.log(this._player.moving);
     console.log(this._player.pos);
   }
 }
