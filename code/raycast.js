@@ -187,11 +187,11 @@ class Graphics{
   }
   start(){
     this._lastTime = new Date().getTime();
-    requestAnimationFrame(update);
+    requestAnimationFrame(this.update);
   }
   update(){
     this._ctx.fillRect(0,0,this._canvas.width,this._canvas.height);
-    requestAnimationFrame(update);
+    requestAnimationFrame(this.update);
   }
 }
 
