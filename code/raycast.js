@@ -192,4 +192,3 @@ var myScene = new Scene({
   player: myPlayer,
   canvas: canvas
 });
-
