@@ -98,10 +98,11 @@ class Player{
     this.initControls();
   }
   initControls(){
-    document.body.addEventListener('keydown',this.onKeyDown);
-    document.body.addEventListener('keyup',this.onKeyUp);
+    document.body.addEventListener('keydown',this.onKeyDown.bind(this));
+    document.body.addEventListener('keyup',this.onKeyUp.bind(this));
   }
   onKeyDown(e){
+   e.preventDefault();
    switch(e.keyCode){
      case KEY.LEFT: this._turning = TURNING.CCW;
          break;
@@ -113,7 +114,8 @@ class Player{
    }
   }
   onKeyUp(e){
-     switch(e.keyCode){
+   e.preventDefault();
+   switch(e.keyCode){
      case KEY.LEFT: this._turning = TURNING.NONE;
          break;
      case KEY.RIGHT: this._turning = TURNING.NONE;
