@@ -21,8 +21,11 @@ class Scene{
   constructor(opts){
     this._level = opts.level;
     this._player = opts.player;
-    this._canvas = opts.canvas;
-    this._ctx = this._canvas.getContext('2d');
+    this._graphics = new Graphics({
+      canvas: opts.canvas,
+      player: this._player,
+      level: this._level
+    });
     this._physics = new Physics({
       step: 10,
       player: this._player,
@@ -164,14 +167,31 @@ class Physics{
    this.update(dt);
   }
   update(dt){
-    console.clear();
-    console.log(dt);
+    //console.log(dt);
     //angle
-    console.log(this._player.turning);
-    console.log(this._player.angle);
+    //console.log(this._player.turning);
+    //console.log(this._player.angle);
     //position
-    console.log(this._player.moving);
-    console.log(this._player.pos);
+    //console.log(this._player.moving);
+    //console.log(this._player.pos);
+  }
+}
+
+class Graphics{
+  constructor(opts){
+    this._canvas = opts.canvas;
+    this._ctx = this._canvas.getContext('2d');
+    this._player = opts.player;
+    this._level = opts.level;
+    this.start();
+  }
+  start(){
+    this._lastTime = new Date().getTime();
+    requestAnimationFrame(this.update()).bind(this);
+  }
+  update(){
+    this._ctx.fillRect(0,0,this._canvas.width,this._canvas.height);
+    requestAnimationFrame(this.update()).bind(this);
   }
 }
 
