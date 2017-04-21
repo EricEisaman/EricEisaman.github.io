@@ -230,7 +230,7 @@ class Graphics{
 }
 
 var myPlayer = new Player({
-  pos: new Vec2(50,250) ,
+  pos: new Vec2(75,275) ,
   playerSprite: "images/player.png"
 });
 
