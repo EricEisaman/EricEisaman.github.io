@@ -195,7 +195,7 @@ class Graphics{
     this._ctx.fillStyle = 'red';
     this._ctx.fillRect(30,30,60,60);
     this._ctx.fillStyle = 'white';
-    this._ctx.fillRect(450,0,150,450);
+    this._ctx.fillRect(450,0,350,450);
     requestAnimationFrame(this.update.bind(this));
   }
 }
@@ -206,7 +206,7 @@ var myPlayer = new Player({
 });
 
 var canvas = document.createElement('canvas');
-canvas.width = 600;
+canvas.width = 800;
 canvas.height = 450;
 document.body.appendChild(canvas);
 
