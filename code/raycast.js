@@ -207,7 +207,7 @@ class Graphics{
     this._ctx.fillStyle = 'red';
     for( let i=0; i<this._level.map.length; i++){
       if(this._level.map[i]){
-        let x = (i$9)*50;
+        let x = (i&9)*50;
         let y = 50*Math.floor(i/9);
         this._ctx.fillRect(x,y,50,50);
       }
