@@ -190,10 +190,10 @@ class Graphics{
     requestAnimationFrame(this.update.bind(this));
   }
   update(){
-    this._ctx.clearRect(0,0,this._canvas.width,this._canvas.height);
+    this._ctx.fillStyle = 'black';
+    this._ctx.fillRect(0,0,this._canvas.width,this._canvas.height);
     this._ctx.fillStyle = 'red';
     this._ctx.fillRect(30,30,60,60);
-    this._ctx.fillStyle = 'black';
     requestAnimationFrame(this.update.bind(this));
   }
 }
