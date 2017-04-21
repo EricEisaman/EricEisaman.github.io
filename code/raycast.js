@@ -203,16 +203,14 @@ class Graphics{
   }
   update(){
     this._ctx.fillStyle = 'black';
-    this._ctx.fillRect(0,0,this._canvas.width,this._canvas.height);
+    this._ctx.fillRect(0,0,450,450);
     this._ctx.fillStyle = 'white';
-    this._ctx.fillRect(450,0,350,450);
-    this._ctx.fillStyle = 'yellow';
-    this._ctx.fillRect(525,25,200,200);
+    this._ctx.fillRect(525,0,200,200);
     this._ctx.fillStyle = 'red';
     for( let i=0; i<this._level.map.length; i++){
       if(this._level.map[i]){
         let x = (i%9)*200/9+525;
-        let y = 200/9*Math.floor(i/9)+25;
+        let y = 200/9*Math.floor(i/9);
         console.log("map["+i+"]  x: "+x+"  y: "+y);
         this._ctx.fillRect(x,y,200/9,200/9);
       }
