@@ -147,8 +147,8 @@ class Physics{
   start(){
     this._lastTime = new Date().getTime();
     setInterval(function(){
-      tick(new Date().getTime())
-    }, 10);
+      this.tick(new Date().getTime())
+    }.bind(this), 10);
   }
   tick(now){
    let dt = now - this._lastTime;
