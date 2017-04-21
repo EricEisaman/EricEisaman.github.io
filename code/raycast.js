@@ -23,6 +23,12 @@ class Scene{
     this._player = opts.player;
     this._canvas = opts.canvas;
     this._ctx = this._canvas.getContext('2d');
+    this._physics = new Physics({
+      step: 10,
+      player: this._player,
+      level: this._level
+    });
+    this._physics.start();
   }
   
 }
@@ -61,19 +67,19 @@ class Angle{
   }
 }
 
-const TURNING{
+const TURNING ={
   CCW: -1,
   NONE: 0,
   CW: 1
 }
 
-const MOVING{
+const MOVING ={
   FORWARD: 1,
   NONE: 0,
   BACKWARD: -1
 }
 
-const KEY{
+const KEY ={
   LEFT: 37,
   RIGHT: 39,
   UP: 38,
@@ -136,7 +142,7 @@ class Physics{
     this._step = opts.step;
     this._lastTime;
     this._player = opts.player;
-    this._map = opts.map;
+    this._level = opts.level;
   }
   start(){
     this._lastTime = new Date().getTime();
