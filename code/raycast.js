@@ -220,7 +220,7 @@ class Graphics{
     }
     //Minimap Player ( Note: player is 20x20 and grid squares are 50x50 )
     this._ctx.fillStyle = 'blue';
-    this._ctx.fillRect(this._player.pos.x-10,this._player.y-10,20,20);
+    this._ctx.fillRect(this._player.pos.x-10,this._player.pos.y-10,20,20);
     
     requestAnimationFrame(this.update.bind(this));
   }
