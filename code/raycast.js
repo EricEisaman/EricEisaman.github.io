@@ -218,9 +218,10 @@ class Graphics{
         this._ctx.fillRect(x,y,200/9,200/9);
       }
     }
-    //Minimap Player ( Note: player is 20x20 and grid squares are 50x50 )
+    //Minimap Player ( Note: we scale down the coordinates for the minimap )
     this._ctx.fillStyle = 'blue';
-    this._ctx.fillRect(this._player.pos.x-10,this._player.pos.y-10,20,20);
+    this._ctx.fillRect(this._player.pos.x * (200/450) - (10 * (200/450)) + 525,
+                       this._player.pos.y * (200/450) - (10 * (200/450)),20,20);
     
     requestAnimationFrame(this.update.bind(this));
   }
