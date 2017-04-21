@@ -221,7 +221,9 @@ class Graphics{
     //Minimap Player ( Note: we scale down the coordinates for the minimap )
     this._ctx.fillStyle = 'blue';
     this._ctx.fillRect(this._player.pos.x * (200/450) - (10 * (200/450)) + 525,
-                       this._player.pos.y * (200/450) - (10 * (200/450)),20,20);
+                       this._player.pos.y * (200/450) - (10 * (200/450)),
+                       20 * (200/450),
+                       20 * (200/450));
     
     requestAnimationFrame(this.update.bind(this));
   }
