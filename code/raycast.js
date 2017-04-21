@@ -15,6 +15,18 @@ class Level{
     this._map = opts.map;
     this._wallSprite = opts.wallSprite;
   }
+  get map(){
+    return this._map;
+  }
+  set map(newMap){
+    this._map = newMap;
+  }
+  get wallSprite(){
+    return this._wallSprite;
+  }
+  set wallSprite(newSprite){
+    this._wallSprite = newSprite;
+  }
 }
 
 class Scene{
