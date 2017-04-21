@@ -214,7 +214,7 @@ class Graphics{
       if(this._level.map[i]){
         let x = (i%9)*200/9+525;
         let y = 200/9*Math.floor(i/9);
-        console.log("map["+i+"]  x: "+x+"  y: "+y);
+        //console.log("map["+i+"]  x: "+x+"  y: "+y);
         this._ctx.fillRect(x,y,200/9,200/9);
       }
     }
