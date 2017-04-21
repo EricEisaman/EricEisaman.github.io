@@ -204,8 +204,8 @@ var myPlayer = new Player({
 });
 
 var canvas = document.createElement('canvas');
-canvas.width = 800;
-canvas.height = 600;
+canvas.width = 600;
+canvas.height = 450;
 document.body.appendChild(canvas);
 
 var level_1 = new Level({
