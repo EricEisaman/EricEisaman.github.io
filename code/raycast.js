@@ -59,6 +59,9 @@ class Vec2{
     return Math.sqrt( (this._x - vec2.x)*(this._x - vec2.x) +
                       (this._y - vec2.y)*(this._y - vec2.y) );
   }
+  copy(){
+    return new Vec2(this.x,this.y);
+  }
 }
 
 const TURNING ={
@@ -174,7 +177,7 @@ class Physics{
 
 class Ray{
   constructor(player){
-    this._from = player.pos;
+    this._from = player.pos.copy();
     this._to = this._from;
     this._angle = player.angle-player.fov/2;
     this._ds = 0.1;
