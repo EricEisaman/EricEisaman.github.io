@@ -1,15 +1,5 @@
 'use strict';
 
-var map_1 = [ 0 , 0 , 0 , 0 , 1 , 0 , 0 , 0 , 0 ,
-              0 , 0 , 0 , 0 , 1 , 0 , 0 , 0 , 0 ,
-              0 , 0 , 0 , 0 , 1 , 0 , 0 , 0 , 0 ,
-              0 , 0 , 0 , 0 , 1 , 0 , 0 , 0 , 0 ,
-              0 , 0 , 0 , 0 , 1 , 1 , 1 , 1 , 1 ,
-              0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ,
-              0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ,
-              0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ,
-              0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0   ];
-
 class Level{
   constructor(opts){
     this._map = opts.map;
@@ -45,7 +35,7 @@ class Scene{
     });
     this._physics.start();
   }
-  
+
 }
 
 class Vec2{
@@ -65,20 +55,9 @@ class Vec2{
   set y(value){
     this._y = value;
   }
-}
-
-class Angle{
-  constructor(degrees){
-    this._deg = degrees;
-  }
-  get deg(){
-    return this._deg;
-  }
-  set deg(degrees){
-    this_deg = degrees;
-  }
-  get rad(){
-    return this._deg*Math.PI/180;
+  distanceTo(vec2){
+    return Math.sqrt( (this._x - vec2.x)*(this._x - vec2.x) +
+                      (this._y - vec2.y)*(this._y - vec2.y) );
   }
 }
 
@@ -107,10 +86,10 @@ class Player{
     this._playerSprite = opts.playerSprite;
     this._speed = 1;
     this._velocity = new Vec2(0,0);
-    this._angle = new Angle(30);
+    this._angle = 30;
     this._turning = TURNING.NONE;
     this._moving = MOVING.NONE;
-    this._fov = new Angle(60);
+    this._fov = 90;
     this.initControls();
   }
   initControls(){
@@ -159,6 +138,9 @@ class Player{
   get moving(){
     return this._moving;
   }
+  get fov(){
+    return this._fov;
+  }
 }
 
 class Physics{
@@ -190,12 +172,51 @@ class Physics{
   }
 }
 
+class Ray{
+  constructor(player){
+    this._from = player.pos;
+    this._to = this._from;
+    this._angle = player.angle-player.fov/2;
+    this._ds = 0.1;
+    this._s = 0;
+    this._dtheta = player.fov/canvas.width;
+    this._intersects = [ ];
+  }
+  cast(){
+    let from = this._from;
+    let to = this._to
+    let angle = this._angle;
+    let result = false;
+    while(!result){
+      this._s += this._ds;
+      this._to.x = this._from.x + this._s*Math.cos(this._angle*Math.PI/180);
+      this._to.y = this._from.y + this._s*Math.sin(this._angle*Math.PI/180);
+      result = collides();
+    }
+    return result;
+  }
+  collides(){
+    //check 'to' againt map
+  }
+}
+// Each map cell is 50x50 in First Person Viewport
+var map_1 = [ 0 , 0 , 0 , 0 , 1 , 0 , 0 , 0 , 0 , // indices 0-8
+              0 , 0 , 0 , 0 , 1 , 0 , 0 , 0 , 0 , // indices 9-17
+              0 , 0 , 0 , 0 , 1 , 0 , 0 , 0 , 0 , // indices 18-26
+              0 , 0 , 0 , 0 , 1 , 0 , 0 , 0 , 0 , // indices 27-35
+              0 , 0 , 0 , 0 , 1 , 1 , 1 , 1 , 1 , // indices 36-44
+              0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , // indices 45-53
+              0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , // indices 54-62
+              0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , // indices 63-71
+              0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 ];// indices 72-80
+
 class Graphics{
   constructor(opts){
     this._canvas = opts.canvas;
     this._ctx = this._canvas.getContext('2d');
     this._player = opts.player;
     this._level = opts.level;
+    this._ray = new Ray(this._player);
     this.start();
   }
   start(){
@@ -206,6 +227,12 @@ class Graphics{
     //First Person Viewport Background
     this._ctx.fillStyle = 'black';
     this._ctx.fillRect(0,0,450,450);
+    //First Person Viewport RayCasting
+    for(let i=0; i<canvas.width){
+      let objToRender = this._ray.cast();
+      renderVerticalLine(objToRender);
+      this._ray._angle += this._dtheta;
+    }
     //Minimap Background
     this._ctx.fillStyle = 'white';
     this._ctx.fillRect(525,0,200,200);
@@ -225,8 +252,11 @@ class Graphics{
                        this._player.pos.y * (200/450) - (10 * (200/450)),
                        20 * (200/450),
                        20 * (200/450));
-    
+
     requestAnimationFrame(this.update.bind(this));
+  }
+  renderVerticalLine(objToRender){
+
   }
 }
 
