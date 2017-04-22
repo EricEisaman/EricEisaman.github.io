@@ -178,25 +178,18 @@ class Physics{
 class Ray{
   constructor(player){
     this._player = player;
-    this._angle = this._player.angle-this._player.fov/2;
-    this._dtheta = this._player.fov/canvas.width;
-    this._from = this._player.pos.copy();
-    this._to = this._from;
-    this._s = 0;
-    this._ds = 0.1;
-    this._intersects = [ ];
   }
   cast(){
-    this._angle = this._player.angle-this._player.fov/2;
-    this._dtheta = this._player.fov/canvas.width;
-    this._from = this._player.pos.copy();
-    this._to = this._from;
-    this._s = 0;
+    let angle = this._player.angle-this._player.fov/2;
+    let dtheta = this._player.fov/canvas.width;
+    let from = this._player.pos.copy();
+    let to = from;
+    let s = 0;
     let result = false;
-    while(!result && (this._s < 450)){
-      this._s += this._ds;
-      this._to.x = this._from.x + this._s*Math.cos(this._angle*Math.PI/180);
-      this._to.y = this._from.y + this._s*Math.sin(this._angle*Math.PI/180);
+    while(!result && (s < 450)){
+      s += 0.1;
+      to.x = from.x + s*Math.cos(angle*Math.PI/180);
+      to.y = from.y + s*Math.sin(angle*Math.PI/180);
       result = this.collides();
     }
     return result;
