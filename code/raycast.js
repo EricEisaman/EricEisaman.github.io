@@ -203,7 +203,7 @@ class Ray{
   }
   collides(){
     //check 'to' againt map
-    return {val:"This is a test"};
+    //return {val:"This is a test"};
   }
 }
 // Each map cell is 50x50 in First Person Viewport
@@ -263,7 +263,7 @@ class Graphics{
     requestAnimationFrame(this.update.bind(this));
   }
   renderVerticalLine(objToRender){
-    console.log(objToRender);
+    //console.log(objToRender);
   }
 }
 
