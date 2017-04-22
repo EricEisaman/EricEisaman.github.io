@@ -176,7 +176,6 @@ class Ray{
   constructor(player){
     this._from = player.pos;
     this._to = this._from;
-    console.log(player.angle-player.fov/2);
     this._angle = player.angle-player.fov/2;
     this._ds = 0.1;
     this._s = 0;
@@ -189,8 +188,8 @@ class Ray{
     let result = false;
     while(!result){
       this._s += this._ds;
-      this._to.x = from.x + this._s*Math.cos(angle*Math.PI/180);
-      this._to.y = from.y + this._s*Math.sin(angle*Math.PI/180);
+      this._to.x = from.x + this._s*Math.cos(this._angle*Math.PI/180);
+      this._to.y = from.y + this._s*Math.sin(this._angle*Math.PI/180);
       result = this.collides();
     }
     return result;
