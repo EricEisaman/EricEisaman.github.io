@@ -323,10 +323,9 @@ class Graphics{
     requestAnimationFrame(this.update.bind(this));
   }
   renderVerticalLine(objToRender){
-    //console.log(objToRender);
+    console.log(objToRender);
     if(objToRender){
-      this._ctx.fillStyle = 'light-green';
-      this._ctx.fillRect(objToRender.x,objToRender.y,2,2);
+
     }
   }
 }
