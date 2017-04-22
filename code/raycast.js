@@ -187,7 +187,7 @@ class Ray{
     this._intersects = [ ];
   }
   cast(){
-    this._angle = this._player.angle-player.fov/2;
+    this._angle = this._player.angle-this._player.fov/2;
     this._dtheta = this._player.fov/canvas.width;
     this._from = this._player.pos.copy();
     this._to = this._from;
