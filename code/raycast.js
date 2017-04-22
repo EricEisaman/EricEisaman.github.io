@@ -188,7 +188,7 @@ class Ray{
     let s = 0;
     let result = false;
     while(!result && (s < 450)){
-      from = this.nextEdgePoint(from,angle));
+      from = this.nextEdgePoint(from,angle);
       result = this.collides(from);
     }
     return result;
