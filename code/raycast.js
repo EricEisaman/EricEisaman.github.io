@@ -191,7 +191,7 @@ class Ray{
       this._s += this._ds;
       this._to.x = this._from.x + this._s*Math.cos(this._angle*Math.PI/180);
       this._to.y = this._from.y + this._s*Math.sin(this._angle*Math.PI/180);
-      result = collides();
+      result = this.collides();
     }
     return result;
   }
