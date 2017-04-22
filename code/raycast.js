@@ -187,7 +187,7 @@ class Ray{
     let s = 0;
     let result = false;
     while(!result && (s < 450)){
-      s += 0.1;
+      s += 1;
       to.x = from.x + s*Math.cos(angle*Math.PI/180);
       to.y = from.y + s*Math.sin(angle*Math.PI/180);
       result = this.collides();
