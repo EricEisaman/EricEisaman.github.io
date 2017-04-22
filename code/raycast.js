@@ -263,7 +263,7 @@ class Graphics{
     requestAnimationFrame(this.update.bind(this));
   }
   renderVerticalLine(objToRender){
-
+    console.log(objToRender);
   }
 }
 
