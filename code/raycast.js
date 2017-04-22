@@ -177,16 +177,21 @@ class Physics{
 
 class Ray{
   constructor(player){
-    this._from = player.pos.copy();
-    this._to = this._from;
+    this._player = player;
     this._angle = player.angle-player.fov/2;
-    this._ds = 0.1;
+    this._dtheta = this._player.fov/canvas.width;
+    this._from = this._player.pos.copy();
+    this._to = this._from;
     this._s = 0;
-    this._dtheta = player.fov/canvas.width;
+    this._ds = 0.1;
     this._intersects = [ ];
   }
   cast(){
     this._angle = player.angle-player.fov/2;
+    this._dtheta = this._player.fov/canvas.width;
+    this._from = this._player.pos.copy();
+    this._to = this._from;
+    this._s = 0;
     let result = false;
     while(!result){
       this._s += this._ds;
