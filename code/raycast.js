@@ -197,6 +197,7 @@ class Ray{
   }
   collides(){
     //check 'to' againt map
+    return {val:"This is a test"};
   }
 }
 // Each map cell is 50x50 in First Person Viewport
@@ -228,7 +229,7 @@ class Graphics{
     this._ctx.fillStyle = 'black';
     this._ctx.fillRect(0,0,450,450);
     //First Person Viewport RayCasting
-    for(let i=0; i<canvas.width){
+    for(let i=0; i<canvas.width; i++){
       let objToRender = this._ray.cast();
       renderVerticalLine(objToRender);
       this._ray._angle += this._dtheta;
