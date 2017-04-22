@@ -176,8 +176,9 @@ class Physics{
 }
 
 class Ray{
-  constructor(player){
+  constructor(player,map){
     this._player = player;
+    this._map = map;
   }
   cast(){
     let angle = this._player.angle-this._player.fov/2;
@@ -187,16 +188,82 @@ class Ray{
     let s = 0;
     let result = false;
     while(!result && (s < 450)){
-      s += 1;
-      to.x = from.x + s*Math.cos(angle*Math.PI/180);
-      to.y = from.y + s*Math.sin(angle*Math.PI/180);
-      result = this.collides();
+      from = this.nextEdgePoint(from,angle));
+      result = this.collides(from);
     }
     return result;
   }
-  collides(){
-    //check 'to' againt map
-    return false;
+  nextEdgePoint(from,angle){
+    let ca = Math.cos(angle);
+    let sa = Math.sin(angle);
+    let caPos = (ca>0);
+    let saPos = (sa>0);
+    let cLarger = (Math.abs(ca)>Math.abs(sa));
+    let dx,dy;
+    if(caPos && saPos){
+    //top and right
+      dx = 50 - from.x%50;
+      dy = from.y%50;
+      if((sa/ca)<(dy/dx)){
+        //right
+        let x = Math.round(from.x + dx);
+        let y = Math.round(from.y + dx*Math.tan(angle*Math.PI/180));
+        return new Vec2(x,y);
+      }else{
+        //top
+        let x = Math.round(from.x + dy/Math.tan(angle*Math.PI/180));
+        let y = Math.round(from.y - dy);
+        return new Vec2(x,y);
+      }
+    }else if( caPos && !saPos){
+    //bottom and right
+      dx = 50 - from.x%50;
+      dy = 50 - from.y%50;
+      if((Math.abs(sa/ca))<(dy/dx)){
+        //right
+        let x = Math.round(from.x + dx);
+        let y = Math.round(from.y + dx*Math.tan(angle*Math.PI/180));
+        return new Vec2(x,y);
+      }else{
+        //bottom
+        let x = Math.round(from.x + dy/Math.tan(angle*Math.PI/180));
+        let y = Math.round(from.y + dy);
+        return new Vec2(x,y);
+      }
+    }else if( !caPos && !saPos){
+    //bottom and left
+      dx = from.x%50;
+      dy = 50 - from.y%50;
+      if((Math.abs(sa/ca))<(dy/dx)){
+        //left
+        let x = Math.round(from.x - dx);
+        let y = Math.round(from.y + dx*Math.tan(angle*Math.PI/180));
+        return new Vec2(x,y);
+      }else{
+        //bottom
+        let x = Math.round(from.x + dy/Math.tan(angle*Math.PI/180));
+        let y = Math.round(from.y + dy);
+        return new Vec2(x,y);
+      }
+    }else{
+    //top and left
+      dx = from.x%50;
+      dy = from.y%50;
+      if((Math.abs(sa/ca))<(dy/dx)){
+        //left
+        let x = Math.round(from.x - dx);
+        let y = Math.round(from.y + dx*Math.tan(angle*Math.PI/180));
+        return new Vec2(x,y);
+      }else{
+        //top
+        let x = Math.round(from.x + dy/Math.tan(angle*Math.PI/180));
+        let y = Math.round(from.y - dy);
+        return new Vec2(x,y);
+      }
+    }
+  }
+  collides(from){
+    return from;
   }
 }
 // Each map cell is 50x50 in First Person Viewport
@@ -216,7 +283,7 @@ class Graphics{
     this._ctx = this._canvas.getContext('2d');
     this._player = opts.player;
     this._level = opts.level;
-    this._ray = new Ray(this._player);
+    this._ray = new Ray(this._player,this._level.map);
     this.start();
   }
   start(){
@@ -258,7 +325,8 @@ class Graphics{
   renderVerticalLine(objToRender){
     //console.log(objToRender);
     if(objToRender){
-
+      this._ctx.fillStyle = 'light-green';
+      this._ctx.fillRect(objToRender.x,objToRender.y,2,2);
     }
   }
 }
