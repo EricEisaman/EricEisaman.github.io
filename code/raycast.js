@@ -193,7 +193,7 @@ class Ray{
     this._to = this._from;
     this._s = 0;
     let result = false;
-    while(!result && this._s < 450){
+    while(!result && (this._s < 450)){
       this._s += this._ds;
       this._to.x = this._from.x + this._s*Math.cos(this._angle*Math.PI/180);
       this._to.y = this._from.y + this._s*Math.sin(this._angle*Math.PI/180);
@@ -290,4 +290,3 @@ var myScene = new Scene({
   player: myPlayer,
   canvas: canvas
 });
-
