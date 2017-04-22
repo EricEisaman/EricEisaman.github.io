@@ -183,13 +183,12 @@ class Ray{
     this._intersects = [ ];
   }
   cast(){
-    let from = this._from;
-    let angle = this._angle;
+    this._angle = player.angle-player.fov/2;
     let result = false;
     while(!result){
       this._s += this._ds;
-      this._to.x = from.x + this._s*Math.cos(this._angle*Math.PI/180);
-      this._to.y = from.y + this._s*Math.sin(this._angle*Math.PI/180);
+      this._to.x = this._from.x + this._s*Math.cos(this._angle*Math.PI/180);
+      this._to.y = this._from.y + this._s*Math.sin(this._angle*Math.PI/180);
       result = this.collides();
     }
     return result;
