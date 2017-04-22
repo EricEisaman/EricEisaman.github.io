@@ -231,7 +231,7 @@ class Graphics{
     //First Person Viewport RayCasting
     for(let i=0; i<canvas.width; i++){
       let objToRender = this._ray.cast();
-      renderVerticalLine(objToRender);
+      this.renderVerticalLine(objToRender);
       this._ray._angle += this._dtheta;
     }
     //Minimap Background
