@@ -211,7 +211,7 @@ class Ray{
     let to = from;
     let result = false;
     let count = 0;
-    while(!result && count<5 && !stop){
+    while(!result && count<10 && !stop){
       from = this.nextEdgePoint(from,angle);
       result = this.collides(from);
       this._debugPoints.push(from);
