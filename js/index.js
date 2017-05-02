@@ -26,4 +26,6 @@ listItems[7].addEventListener('click',function(){
 listItems[8].addEventListener('click',function(){
   window.open("mod9.html","_blank")
 })
-
+listItems[9].addEventListener('click',function(){
+  window.open("mod10.html","_blank")
+})
