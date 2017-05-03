@@ -68,13 +68,13 @@
 				var onError = function ( xhr ) {
 				};
 				var loader = new THREE.ImageLoader( manager );
-				loader.load( 'textures/UV_Grid_Sm.jpg', function ( image ) {
+				loader.load( 'models/mv.png', function ( image ) {
 					texture.image = image;
 					texture.needsUpdate = true;
 				} );
 				// model
 				var loader = new THREE.OBJLoader( manager );
-				loader.load( 'obj/male02/male02.obj', function ( object ) {
+				loader.load( 'models/mv.obj', function ( object ) {
 					object.traverse( function ( child ) {
 						if ( child instanceof THREE.Mesh ) {
 							child.material.map = texture;
