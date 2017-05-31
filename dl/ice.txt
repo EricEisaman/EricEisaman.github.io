@@ -1,0 +1,76 @@
+Interactive Connectivity Establishment (ICE)
+In order to establish a peer-to-peer connection, by definition, the peers must be able to route packets to each other. A trivial statement on the surface, but hard to achieve in practice due to the numerous layers of firewalls and NAT devices between most peers; see UDP and Network Address Translators.
+
+First, let’s consider the trivial case, where both peers are located on the same internal network, and there are no firewalls or NATs between them. To establish the connection, each peer can simply query its operating system for its IP address (or multiple, if there are multiple network interfaces), append the provided IP and port tuples to the generated SDP strings, and forward it to the other peer. Once the SDP exchange is complete, both peers can initiate a direct peer-to-peer connection.
+
+The earlier SDP example (undefined '18-114') illustrates the preceding scenario: the a=candidate line lists a private (192.168.x.x) IP address for the peer initiating the session; see Reserved Private Network Ranges.
+
+So far, so good. However, what would happen if one or both of the peers were on distinct private networks? We could repeat the preceding workflow, discover and embed the private IP addresses of each peer, but the peer-to-peer connections would obviously fail! What we need is a public routing path between the peers. Thankfully, the WebRTC framework manages most of this complexity on our behalf:
+
+Each RTCPeerConnection connection object contains an "ICE agent."
+ICE agent is responsible for gathering local IP, port tuples (candidates).
+ICE agent is responsible for performing connectivity checks between peers.
+ICE agent is responsible for sending connection keepalives.
+Once a session description (local or remote) is set, local ICE agent automatically begins the process of discovering all the possible candidate IP, port tuples for the local peer:
+
+ICE agent queries the operating system for local IP addresses.
+If configured, ICE agent queries an external STUN server to retrieve the public IP and port tuple of the peer.
+If configured, ICE agent appends the TURN server as a last resort candidate. If the peer-to-peer connection fails, the data will be relayed through the specified intermediary.
+If you have ever had to answer the "What is my public IP address?" question, then you’ve effectively performed a manual "STUN lookup." The STUN protocol allows the browser to learn if it’s behind a NAT and to discover its public IP and port; see STUN, TURN, and ICE.
+
+Whenever a new candidate (an IP, port tuple) is discovered, the agent automatically registers it with the RTCPeerConnection object and notifies the application via a callback function (onicecandidate). Once the ICE gathering is complete, the same callback is fired to notify the application. Let’s extend our earlier example to work with ICE:
+
+var ice = {"iceServers": [
+  {"url": "stun:stun.l.google.com:19302"}, 
+  {"url": "turn:turnserver.com", "username": "user", "credential": "pass"} 
+]};
+
+var signalingChannel = new SignalingChannel();
+var pc = new RTCPeerConnection(ice);
+
+navigator.getUserMedia({ "audio": true }, gotStream, logError);
+
+function gotStream(stream) {
+  pc.addStream(stream);
+
+  pc.createOffer(function(offer) {
+    pc.setLocalDescription(offer); 
+  });
+}
+
+pc.onicecandidate = function(evt) {
+  if (evt.target.iceGatheringState == "complete") { 
+      local.createOffer(function(offer) {
+        console.log("Offer with ICE candidates: " + offer.sdp);
+        signalingChannel.send(offer.sdp); 
+      });
+  }
+}
+
+...
+
+// Offer with ICE candidates:
+// a=candidate:1862263974 1 udp 2113937151 192.168.1.73 60834 typ host ... 
+// a=candidate:2565840242 1 udp 1845501695 50.76.44.100 60834 typ srflx ... 
+STUN server, configured to use Google's public test server
+TURN server for relaying data if peer-to-peer connection fails
+Apply local session description: initiates ICE gathering process
+Subscribe to ICE events and listen for ICE gathering completion
+Regenerate the SDP offer (now with discovered ICE candidates)
+Private ICE candidate (192.168.1.73:60834) for the peer
+Public ICE candidate (50.76.44.100:69834) returned by the STUN server
+The previous example uses Google’s public demo STUN server. Unfortunately, STUN alone may not be sufficient (see STUN and TURN in Practice), and you may also need to provide a TURN server to guarantee connectivity for peers that cannot establish a direct peer-to-peer connection (~8% of users).
+
+As the example illustrates, the ICE agent handles most of the complexity on our behalf: the ICE gathering process is triggered automatically, STUN lookups are performed in the background, and the discovered candidates are registered with the RTCPeerConnection object. Once the process is complete, we can generate the SDP offer and use the signaling channel to deliver it to the other peer.
+
+Then, once the ICE candidates are received by the other peer, we are ready to begin the second phase of establishing a peer-to-peer connection: once the remote session description is set on the RTCPeerConnection object, which now contains a list of candidate IP and port tuples for the other peer, the ICE agent begins connectivity checks (Figure 18-8) to see if it can reach the other party.
+
+Figure 18-8. WireShark capture of a peer-to-peer STUN binding request and response
+Figure 18-8. WireShark capture of a peer-to-peer STUN binding request and response
+The ICE agent sends a message (a STUN binding request), which the other peer must acknowledge with a successful STUN response. If this completes, then we finally have a routing path for a peer-to-peer connection! Conversely, if all candidates fail, then either the RTCPeerConnection is marked as failed, or the connection falls back to a TURN relay server to establish the connection.
+
+The ICE agent automatically ranks and prioritizes the order in which the candidate connection checks are performed: local IP addresses are checked first, then public, and TURN is used as a last resort. Once a connection is established, the ICE agent continues to issue periodic STUN requests to the other peer. This serves as a connection keepalive.
+
+Phew! As we said at the beginning of this section, initiating a peer-to-peer connection requires (much) more work than opening an XHR, EventSource, or a new WebSocket session. The good news is, most of this work is done on our behalf by the browser. However, for performance reasons, it is important to keep in mind that the process may incur multiple roundtrips between the STUN servers and between the individual peers before we can begin transmitting data—that is, assuming ICE negotiation is successful.
+
+§
