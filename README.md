@@ -1,7 +1,6 @@
-# EricEisaman.github.io
+# [EricEisaman.github.io](http://ericeisaman.github.io)
 ____
-* Custom Learning Path Template
-* ELHS Game Dev Course Requirement
+* A repository where I post some examples of technical blog posts to provide guidance for students.
 
 ## Bi-Weekly Requirements
 ____
