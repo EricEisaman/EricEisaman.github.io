@@ -1,2 +1,2 @@
-# DS Sprite Game Demo
+# Game Demo Using DivSprite Library
 ____
