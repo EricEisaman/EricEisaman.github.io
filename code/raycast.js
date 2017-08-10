@@ -78,6 +78,14 @@ class Vec2{
     return Math.sqrt( (this._x - vec2.x)*(this._x - vec2.x) +
                       (this._y - vec2.y)*(this._y - vec2.y) );
   }
+  scale(sx,sy){
+    this._x *= sx;
+    this._y *= sy;
+  }
+  add(vec2){
+    this._x += vec2.x;
+    this._y += vec2.y;
+  }
   copy(){
     return new Vec2(this.x,this.y);
   }
@@ -106,7 +114,7 @@ class Player{
   constructor(opts){
     this._pos = opts.pos;
     this._playerSprite = opts.playerSprite;
-    this._speed = 1;
+    this._speed = 0.3;
     this._turningSpeed = 0.5;
     this._velocity = new Vec2(0,0);
     this._angle = PLAYERANGLE;
@@ -193,7 +201,12 @@ class Physics{
     //position
     //console.log(this._player.moving);
     //console.log(this._player.pos);
-    this._player.pos += this._player._moving * this._player._speed * dt;
+    let s = this._player._speed;
+    let a = this._player.angle*Math.PI/180;
+    let ca = Math.cos(a);
+    let sa = Math.sin(a);
+    let v = new Vec2(s*ca,s*sa);
+    this._player.pos.add(v.x*dt,v.y*dt);
   }
 }
 var PLAYERANGLE = -360 + 720*Math.random();
