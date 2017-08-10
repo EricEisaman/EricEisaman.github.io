@@ -193,6 +193,7 @@ class Physics{
     //position
     //console.log(this._player.moving);
     //console.log(this._player.pos);
+    this._player.pos += this._player._moving * this._player._speed * dt;
   }
 }
 var PLAYERANGLE = -360 + 720*Math.random();
