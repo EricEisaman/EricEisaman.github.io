@@ -425,10 +425,10 @@ class Graphics{
     for(let i=0; i<pts.length; i++){
       this._ctx.fillStyle = 'green';
       this._ctx.fillRect(
-          pts[i].x * (140/450) - (4 * (140/450)),
-          pts[i].y * (140/450) - (4 * (140/450)),
-          8 * (140/450),
-          8 * (140/450));
+          pts[i].x * (140/450) - (2 * (140/450)),
+          pts[i].y * (140/450) - (2 * (140/450)),
+          4 * (140/450),
+          4 * (140/450));
     }
   }
   renderVerticalLine(objToRender){
