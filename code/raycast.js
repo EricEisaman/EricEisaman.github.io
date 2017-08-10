@@ -107,7 +107,7 @@ class Player{
     this._pos = opts.pos;
     this._playerSprite = opts.playerSprite;
     this._speed = 1;
-    this._turningSpeed = 1;
+    this._turningSpeed = 0.5;
     this._velocity = new Vec2(0,0);
     this._angle = PLAYERANGLE;
     this._turning = TURNING.NONE;
