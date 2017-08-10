@@ -203,7 +203,7 @@ class Physics{
     //position
     //console.log(this._player.moving);
     //console.log(this._player.pos);
-    let s = this._player._speed;
+    let s = this._player._speed * this._player._moving;
     let a = this._player.angle*Math.PI/180;
     let ca = Math.cos(a);
     let sa = Math.sin(a);
