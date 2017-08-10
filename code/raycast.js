@@ -86,6 +86,7 @@ class Vec2{
   add(vec2){
     this._x += vec2.x;
     this._y += vec2.y;
+    return this;
   }
   copy(){
     return new Vec2(this.x,this.y);
