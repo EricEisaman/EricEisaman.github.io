@@ -84,9 +84,9 @@ class Vec2{
 }
 
 const TURNING ={
-  CCW: -1,
+  CW: -1,
   NONE: 0,
-  CW: 1
+  CCW: 1
 }
 
 const MOVING ={
