@@ -107,6 +107,7 @@ class Player{
     this._pos = opts.pos;
     this._playerSprite = opts.playerSprite;
     this._speed = 1;
+    this._turningSpeed = 1;
     this._velocity = new Vec2(0,0);
     this._angle = PLAYERANGLE;
     this._turning = TURNING.NONE;
@@ -129,7 +130,6 @@ class Player{
          break;
      case KEY.DOWN: this._moving = MOVING.BACKWARD;
    }
-     console.log(this._turning);
   }
   onKeyUp(e){
    e.preventDefault();
@@ -189,6 +189,7 @@ class Physics{
     //angle
     //console.log(this._player.turning);
     //console.log(this._player.angle);
+    this._player.angle += this._player._turning * this._player._turningSpeed * dt;
     //position
     //console.log(this._player.moving);
     //console.log(this._player.pos);
@@ -365,8 +366,9 @@ class Graphics{
     //   this._ray._angle += this._dtheta;
     // }
     let dtheta = this._player.fov/this._canvas.width;
+    let startAngle = this._player.angle - this._player.fov/2;
     for(let i=0; i<this._canvas.width; i++){
-      this._ray.cast(i*dtheta);
+      this._ray.cast(i*dtheta + startAngle);
     }
     //Minimap
     //this.drawMinimap({debug:false});
