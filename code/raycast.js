@@ -81,6 +81,7 @@ class Vec2{
   scale(sx,sy){
     this._x *= sx;
     this._y *= sy;
+    return this;
   }
   add(vec2){
     this._x += vec2.x;
