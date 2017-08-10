@@ -129,6 +129,7 @@ class Player{
          break;
      case KEY.DOWN: this._moving = MOVING.BACKWARD;
    }
+     console.log(this._turning);
   }
   onKeyUp(e){
    e.preventDefault();
