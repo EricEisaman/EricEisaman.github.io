@@ -152,7 +152,6 @@ class Player{
          break;
      case KEY.DOWN: this._moving = MOVING.NONE;
    }
-    console.log(this._angle);
   }
   get pos(){
     return this._pos;
