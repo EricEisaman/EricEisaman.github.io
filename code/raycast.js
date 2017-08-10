@@ -218,8 +218,8 @@ class Ray{
       this._debugPoints.push(from);
       count++;
     }
-    stop = true;
-    console.log(this._debugPoints);
+    //stop = true;
+    //console.log(this._debugPoints);
     return result;
   }
   nextEdgePoint(from,angle){
@@ -366,7 +366,9 @@ class Graphics{
     // }
     this._ray.cast();
     //Minimap
-    this.drawMinimap({debug:false});
+    //this.drawMinimap({debug:false});
+    let pts = this._ray._debugPoints;
+    this.drawMinimap({debug:true,pts:pts});
     requestAnimationFrame(this.update.bind(this));
   }
   drawMinimap(opt){
