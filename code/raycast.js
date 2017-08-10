@@ -368,10 +368,10 @@ class Graphics{
     for(i=0; i<this._canvas.width; i++){
       this._ray.cast(i*dtheta);
     }
-    this._ray._debugPoints = [ ];
     //Minimap
     //this.drawMinimap({debug:false});
     let pts = this._ray._debugPoints;
+    this._ray._debugPoints = [ ];
     this.drawMinimap({debug:true,pts:pts});
     requestAnimationFrame(this.update.bind(this));
   }
