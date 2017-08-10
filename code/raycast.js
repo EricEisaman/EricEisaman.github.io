@@ -205,9 +205,9 @@ class Ray{
     this._nextDXis50 = false;
     this._nextDYis50 = false;
   }
-  cast(){
-    let angle = this._player.angle-this._player.fov/2;
-    let dtheta = this._player.fov/canvas.width;
+  cast(angle){
+    //let angle = this._player.angle-this._player.fov/2;
+    //let dtheta = this._player.fov/canvas.width;
     let from = this._player.pos.copy();
     let to = from;
     let result = false;
@@ -364,7 +364,11 @@ class Graphics{
     //   this.renderVerticalLine(objToRender);
     //   this._ray._angle += this._dtheta;
     // }
-    this._ray.cast();
+    let dtheta = this._player.fov/this._canvas.width;
+    for(i=0; i<this._canvas.width; i++){
+      this._ray.cast(i*dtheta);
+    }
+    this._ray._debugPoints = [ ];
     //Minimap
     //this.drawMinimap({debug:false});
     let pts = this._ray._debugPoints;
