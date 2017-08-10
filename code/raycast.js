@@ -78,9 +78,9 @@ class Vec2{
     return Math.sqrt( (this._x - vec2.x)*(this._x - vec2.x) +
                       (this._y - vec2.y)*(this._y - vec2.y) );
   }
-  scale(sx,sy){
-    this._x *= sx;
-    this._y *= sy;
+  scale(s){
+    this._x *= s;
+    this._y *= s;
     return this;
   }
   add(vec2){
