@@ -129,7 +129,6 @@ class Player{
          break;
      case KEY.DOWN: this._moving = MOVING.BACKWARD;
    }
-     console.log(this._turning);
   }
   onKeyUp(e){
    e.preventDefault();
@@ -205,9 +204,9 @@ class Ray{
     this._nextDXis50 = false;
     this._nextDYis50 = false;
   }
-  cast(){
-    let angle = this._player.angle-this._player.fov/2;
-    let dtheta = this._player.fov/canvas.width;
+  cast(angle){
+    //let angle = this._player.angle-this._player.fov/2;
+    //let dtheta = this._player.fov/canvas.width;
     let from = this._player.pos.copy();
     let to = from;
     let result = false;
@@ -222,6 +221,119 @@ class Ray{
     console.log(this._debugPoints);
     return result;
   }
+    if(caPos && saPos){
+    //top and right
+    //console.log("top and right");
+      dx = this._nextDXis50 ? 50:50 - from.x%50;
+      dy = this._nextDYis50 ? 50:from.y%50;
+      this._nextDXis50=false;
+      this._nextDYis50=false;
+      //console.log(`dx: ${dx}  dy: ${dy}`);
+      if((sa/ca)<(dy/dx)){
+        //right
+        //console.log("right");
+        let x = Math.round(from.x + dx);
+        let y = Math.round(from.y - dx*Math.tan(angle*Math.PI/180));
+        return new Vec2(x,y);
+      }else{
+        //top
+        //console.log("top");
+        let x = Math.round(from.x + dy/Math.tan(angle*Math.PI/180));
+        let y = Math.round(from.y - dy);
+        this._nextDYis50=true;
+        return new Vec2(x,y);
+      }
+    }else if( caPos && !saPos){
+    //bottom and right
+    //console.log("bottom and right");
+      dx = this._nextDXis50 ? 50:50 - from.x%50;
+      dy = this._nextDYis50 ? 50:50 - from.y%50;
+      //console.log(`dx: ${dx}  dy: ${dy}`);
+      this._nextDXis50=false;
+      this._nextDYis50=false;
+      if((Math.abs(sa/ca))<(dy/dx)){
+        //right
+        //console.log("right");
+        let x = Math.round(from.x + dx);
+        let y = Math.round(from.y - dx*Math.tan(angle*Math.PI/180));
+        this._nextDXis50=true;
+        return new Vec2(x,y);
+      }else{
+        //bottom
+        //console.log("bottom");
+        let x = Math.round(from.x - dy/Math.tan(angle*Math.PI/180));
+        let y = Math.round(from.y + dy);
+        this._nextDYis50=true;
+        return new Vec2(x,y);
+      }
+    }else if( !caPos && !saPos){
+    //bottom and left
+    //console.log("bottom and left");
+      dx = this._nextDXis50 ? 50:from.x%50;
+      dy = this._nextDYis50 ? 50:50 - from.y%50;
+      //console.log(`dx: ${dx}  dy: ${dy}`);
+      this._nextDXis50=false;
+      this._nextDYis50=false;
+      if((Math.abs(sa/ca))<(dy/dx)){
+        //left
+        //console.log("left");
+        let x = Math.round(from.x - dx);
+        let y = Math.round(from.y + dx*Math.tan(angle*Math.PI/180));
+        this._nextDXis50=true;
+        return new Vec2(x,y);
+      }else{
+        //bottom
+        //console.log("bottom");
+        let x = Math.round(from.x - dy/Math.tan(angle*Math.PI/180));
+        let y = Math.round(from.y + dy);
+        return new Vec2(x,y);
+      }
+    }else{
+    //top and left
+    //console.log("top and left");
+      dx = this._nextDXis50 ? 50:from.x%50;
+      dy = this._nextDYis50 ? 50:from.y%50;
+      //console.log(`dx: ${dx}  dy: ${dy}`);
+      this._nextDXis50=false;
+      this._nextDYis50=false;
+      if((Math.abs(sa/ca))<(dy/dx)){
+        //left
+        //console.log("left");
+        let x = Math.round(from.x - dx);
+        let y = Math.round(from.y + dx*Math.tan(angle*Math.PI/180));
+        this._nextDXis50=true;
+        return new Vec2(x,y);
+      }else{
+        //top
+        //console.log("top");
+        let x = Math.round(from.x + dy/Math.tan(angle*Math.PI/180));
+        let y = Math.round(from.y - dy);
+        this._nextDYis50=true;
+        return new Vec2(x,y);
+      }
+    }
+  }
+  collides(from){
+    //
+    return false;
+  }
+}
+// Each map cell is 50x50 in First Person Viewport
+var map_1 = [ 1 , 1 , 1 , 1 , 1 , 0 , 0 , 0 , 0 , // indices 0-8
+              1 , 0 , 0 , 0 , 1 , 0 , 0 , 0 , 0 , // indices 9-17
+              1 , 0 , 0 , 0 , 1 , 0 , 0 , 0 , 0 , // indices 18-26
+              1 , 0 , 0 , 0 , 1 , 0 , 0 , 0 , 0 , // indices 27-35
+              1 , 0 , 0 , 0 , 1 , 1 , 1 , 1 , 1 , // indices 36-44
+              1 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 1 , // indices 45-53
+              1 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 1 , // indices 54-62
+              1 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 1 , // indices 63-71
+              1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 ];// indices 72-80
+
+class Graphics{
+  constructor(opts){
+    this._canvas = opts.canvas;
+    this._ctx = this._canvas.getContext('2d');
+    this
   nextEdgePoint(from,angle){
     let ca = Math.cos(angle*Math.PI/180);
     let sa = Math.sin(angle*Math.PI/180);
@@ -364,7 +476,10 @@ class Graphics{
     //   this.renderVerticalLine(objToRender);
     //   this._ray._angle += this._dtheta;
     // }
-    this._ray.cast();
+    let dtheta = this._player.fov/this._canvas.width;
+    for(let i=0; i<this._canvas.width; i++){
+      this._ray.cast(i*dtheta);
+    }
     //Minimap
     this.drawMinimap({debug:false});
     requestAnimationFrame(this.update.bind(this));
