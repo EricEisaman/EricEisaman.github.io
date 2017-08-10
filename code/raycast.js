@@ -116,8 +116,8 @@ class Player{
   constructor(opts){
     this._pos = opts.pos;
     this._playerSprite = opts.playerSprite;
-    this._speed = 0.3;
-    this._turningSpeed = 0.5;
+    this._speed = 0.15;
+    this._turningSpeed = 0.2;
     this._velocity = new Vec2(0,0);
     this._angle = PLAYERANGLE;
     this._turning = TURNING.NONE;
@@ -152,6 +152,7 @@ class Player{
          break;
      case KEY.DOWN: this._moving = MOVING.NONE;
    }
+    console.log(this._angle);
   }
   get pos(){
     return this._pos;
