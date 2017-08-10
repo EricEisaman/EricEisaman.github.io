@@ -342,7 +342,7 @@ class Ray{
     return false;
   }
 }
-// Each map cell is 50x50 in First Person Viewport
+// Each map cell is 50ft x 50ft
 var map_1 = [ 1 , 1 , 1 , 1 , 1 , 0 , 0 , 0 , 0 , // indices 0-8
               1 , 0 , 0 , 0 , 1 , 0 , 0 , 0 , 0 , // indices 9-17
               1 , 0 , 0 , 0 , 1 , 0 , 0 , 0 , 0 , // indices 18-26
