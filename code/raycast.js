@@ -208,7 +208,7 @@ class Physics{
     let a = this._player.angle*Math.PI/180;
     let ca = Math.cos(a);
     let sa = Math.sin(a);
-    let v = new Vec2(s*ca,s*sa);
+    let v = new Vec2(s*ca,-s*sa);
     this._player.pos.add(v.scale(dt));
   }
 }
