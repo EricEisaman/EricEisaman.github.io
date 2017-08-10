@@ -206,7 +206,7 @@ class Physics{
     let ca = Math.cos(a);
     let sa = Math.sin(a);
     let v = new Vec2(s*ca,s*sa);
-    this._player.pos.add(v.x*dt,v.y*dt);
+    this._player.pos.add(v.scale(dt));
   }
 }
 var PLAYERANGLE = -360 + 720*Math.random();
